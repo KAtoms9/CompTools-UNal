@@ -1,0 +1,175 @@
+\documentclass[twoside, a4paper, 12pt, spanish]{article}
+\DeclareUnicodeCharacter{00A0}{\space}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage[colorinlistoftodos]{todonotes} 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{parskip}
+\fancyhf{}             
+\setlength{\headheight}{15.6pt}
+% --- Definición de la paleta "Light High Contrast" ---
+\definecolor{fondo_lhc}{RGB}{255, 255, 255}    % Fondo blanco puro
+\definecolor{texto_lhc}{RGB}{0, 0, 0}          % Texto principal en negro puro
+\definecolor{comentario_lhc}{RGB}{0, 100, 0}   % Comentarios en verde oscuro
+\definecolor{palabra_lhc}{RGB}{0, 0, 255}      % Palabras clave en azul fuerte (def, import)
+\definecolor{funcion_lhc}{RGB}{128, 0, 128}    % Funciones en púrpura intenso (np, plt)
+\definecolor{numero_lhc}{RGB}{178, 34, 34}     % Números en rojo carmesí oscuro
+% --- Configuración del entorno de código ---
+\lstdefinestyle{tema_claro}{
+    language=Python,
+    backgroundcolor=\color{fondo_lhc},   
+    basicstyle=\ttfamily\footnotesize\color{texto_lhc},
+    commentstyle=\color{comentario_lhc},
+    keywordstyle=\color{palabra_lhc}\bfseries,
+    % Truco para colorear los dígitos de rojo oscuro
+    literate=
+        {0}{{\color{numero_lhc}0}}1
+        {1}{{\color{numero_lhc}1}}1
+        {2}{{\color{numero_lhc}2}}1
+        {3}{{\color{numero_lhc}3}}1
+        {4}{{\color{numero_lhc}4}}1
+        {5}{{\color{numero_lhc}5}}1
+        {6}{{\color{numero_lhc}6}}1
+        {7}{{\color{numero_lhc}7}}1
+        {8}{{\color{numero_lhc}8}}1
+        {9}{{\color{numero_lhc}9}}1,
+    % Forzamos las palabras específicas para que salgan en púrpura
+    emph={v_verlet, np, plt, len, zeros, f, t_eval, x, v, a, dt, x0, v0, v_med, aceleracion_p1, factor, sqrt, linspace},
+    emphstyle=\color{funcion_lhc},
+    % Ajustes visuales generales
+    breaklines=true,
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=4,
+    % --- ESTRUCTURA (Números y línea vertical) ---
+    numbers=left,                      % Activa los números a la izquierda
+    numberstyle=\tiny\color{gray},     % Números de línea en gris (para no distraer del código)
+    numbersep=15pt,                    % Separación entre los números y el código
+    frame=l,                           % Crea únicamente la línea vertical a la izquierda
+    framesep=10pt,                     % Distancia entre la línea vertical y el texto
+    rulecolor=\color{texto_lhc},       % Línea vertical en negro puro
+    xleftmargin=25pt,                  % Margen para acomodar los números
+    framexleftmargin=25pt              % Expande el fondo (blanco) para cubrir los números
+}
+% Le decimos a LaTeX que use este estilo por defecto
+\lstset{style=tema_claro}
+% Encabezado con Logo
+\lhead{\includegraphics[height=1.2cm]{Figures/Logos/Logo UNal.pdf}} 
+\chead{\textbf{Universidad Nacional de Colombia}\\ \small Programación e Introducción a Métodos Numéricos}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\contentsname}{Contenidos}
+% -----------------------
+\raggedbottom
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{relsize}
+\usepackage{lipsum}
+\usepackage{xparse}
+\NewDocumentCommand{\myrule}{O{1pt} O{2pt} O{black}}{%
+  \par\nobreak 
+  \kern\the\prevdepth 
+  \kern#2 
+  {\color{#3}\hrule height #1 width\hsize} 
+  \kern#2 
+  \nointerlineskip 
+}
+\usepackage[section]{placeins}
+\usepackage{booktabs}
+\usepackage{colortbl}
+   \newcommand{\myrowcolour}{\rowcolor[gray]{0.925}}
+\usepackage[obeyspaces]{url}
+\usepackage{etoolbox}
+\usepackage[colorlinks, citecolor=black, urlcolor=blue, linkcolor=black, bookmarks=false, hypertexnames=true]{hyperref}
+\usepackage{geometry}
+\geometry{
+	paper=a4paper,
+	inner=3cm,
+	outer=3cm,
+	bindingoffset=.5cm,
+	top=2.5cm, 
+	bottom=2cm,
+	headsep=1cm 
+}
+
+%_________________________________________________________%
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{3cm}
+\textbf{\LARGE Universidad Nacional de Colombia}\\[0.5cm] 
+\textbf{\Large Facultad de Ciencias}\\
+\vspace{20pt}
+\textbf{\large Departamento de Física}\\[0.2cm]
+\vspace{20pt}
+    \includegraphics[width=0.4\textwidth]{Figures/Logos/Escudo UNal.png}
+\par
+\vspace{20pt}
+\textbf{\Large Herramientas Computacionales}\\
+\vspace{15pt}
+\myrule[1pt][7pt]
+\textbf{\LARGE  Proyecto Intermedio}\\
+\vspace{15pt}
+\textbf{\large Simulación de guerra entre guerrillas}\\
+\myrule[1pt][7pt]
+\vspace{25pt}
+\begin{minipage}{0.45\textwidth}
+        \begin{flushleft} \large
+            \textbf{Autores:}\\
+            Sara Alba Mogollón\\
+            Kéyner Alexander Avendaño\\
+            Daniel Pérez Serna\\
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright} \large
+            \textbf{Profesor:} \\
+            William Oquendo Patiño\\
+        \end{flushright}
+    \end{minipage}
+
+    \vfill
+    {\large Bogotá D.C., \today \par}
+\end{center}
+\end{titlepage}
+
+%Índice
+\tableofcontents 
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1} 
+\pagestyle{fancy} 
+%********************************%
+%***********SECTION 1************%
+%********************************%
+\newpage
+
+%Usé la libreria esta pa poder meter codigos que se vea asi bien bonito xddd
+
+\section{Introducción}
+En qué consiste toda esta monda
+\section{Modelo matemático}
+Modelo matematico a seguir descrito en el texto
+\section{Simulación}
+el codigo usado y como funciona/como se optimiza y cómo se construyó y como se relaciona con el modelo matematico
+\section{Análisis}
+Busqueda de la dependencia de $\nu$ respecto de $\alpha$ y qué nos dice la simulación 
+
+\section{Conclusión}
+¿Qué podemos decir entonces de este exponente $\alpha$ y su correlación con la organización de las unidades de ataque?
+Como terminó siendo $\nu$ respecto a $\alpha$
+
+
+
+
+\end{document}
