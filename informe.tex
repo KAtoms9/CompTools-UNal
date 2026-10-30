@@ -230,7 +230,42 @@ Siguiendo con la secuencia de la manera en la que debe de realizarse el proceso 
 
 
 \section{Resultados}
-Busqueda de la dependencia de $\nu$ respecto de $\alpha$ y qué nos dice la simulación 
+Después de realizar la simulación para $N = 100000$, con parámetro $\nu = 0.005,\ 0.010,\ 0.050,\ 0.100$, encontramos que los $\alpha$ correspondientes son:
+
+    {
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+        \begin{tabular}{!{\vrule width 1.5pt} c !{\vrule width 1.0pt} c !{\vrule width 1.5pt}}
+            \hline
+            \textbf{Probabilidad de fragmentación $\nu$} & \textbf{Valor de $\alpha$} \\
+            \hline
+            $0.005$ & $2.55$ \\ \hline
+            $0.010$ & $2.53$ \\ \hline
+            $0.050$ & $2.55$ \\ \hline
+            $0.100$ & $2.60$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    }
+
+Estas tendencias son calculadas a partir de la distribución en unidades de ataque de la guerrilla, la cual es mostrada a continuación:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{loglog.pdf}
+    \caption{Simulación de la distribución de la guerrilla.}
+    \label{fig:placeholder}
+\end{figure}
+
+Este modelo muestra una tendencia a formar varias unidades de ataque con fuerza en el orden de las decenas, evitando formar unidades centralizadas; esto se puede explicar por la necesidad de distribuir la fuerza en varios sectores de la región, con la finalidad de mantener presencia en dichos sectores a la par que evitar gastar muchos recursos peleando contra las fuerzas estatales.\\
+
+Otro detalle a notar es que, si la probabilidad de ataque $\nu$ es pequeña, la guerrilla tiende a formar más grupos fuertes; a medida que $\nu$ aumenta, disminuye la cantidad de unidades de ataque con alta fuerza; esto se puede atribuir a que la guerrilla necesita menos recursos para mantener su presencia y atacar, lo cual se logra explicar si el gobierno es ineficiente en combatir a estas unidades de ataque.
+
+Finalmente, se realizó un modelado de los valores de $\alpha$ en función de la probabilidad de fragmentación $\nu$ para una partición uniforme de $100$ divisiones entre $0.005$ a $0.100$. El resultado se presenta a continuación:
+
+
+
+Con lo cual confirmamos el comportamiento proporcional entre $\alpha$ y $\nu$, pues evidenciamos que la guerrilla tiende a formar unidades de ataque más fuertes si su probabilidad de fragmentación (que puede estar influenciada por la fuerza del gobierno y por la superficie del territorio ocupado) es baja.
 
 \section{Trabajo en grupo y complicaciones}
 
@@ -239,7 +274,7 @@ Como evidencia del trabajo en grupo, se encuentra adjunta una grabación la cual
 La dificultad principal del proyecto fue la coordinación y manejo del tiempo de los integrantes sumado a la comprensión conceptual de los artículos proporcionados por el profesor. También fue un gran reto crear el código ya que se tuvo que aprender buena parte de comandos aleatorizadores que toman y generan valores, y pensar en cómo optimizarlo ya que los codigos iniciales podían tardar hasta 4 minutos y medio.
 Otra dificultad fue usar GitHub ya que fué la primera vez de varios integrantes usándolo y bastante tiempo fue invertido en la comprensión de esta herramienta, incluyendo el uso grupal de Notion, aplicación la cual los integrantes habían usado individualmente más no grupalmente y de por sí el hecho de buscar una herramienta para trabajar grupalmente fue trabajoso gracias al poco tiempo antes de la entrega del proyecto. 
 A continuación se presenta una evidencia de la reunión hecha en meet la noche anterior a la entrega del proyecto.
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{Figures/Imágenes/WhatsApp Image 2026-10-29 at 11.20.55 PM.jpeg}
     \caption{Los 3 integrantes del grupo con bastantes ganas de irse a dormir}
