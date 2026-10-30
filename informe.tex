@@ -176,57 +176,14 @@ Dentro del documento que se nos fue entregado "Universal patterns underlying ong
 
 
 \section{Simulación}
-el codigo usado y como funciona/como se optimiza y cómo se construyó y como se relaciona con el 
-modelo matematico
+1. Primeramente se importaron todas las librerias necesarias para la simulación, esencialmente numpy, scipy, matplotlib y numba, este último tuvo el motivo de usarse por la enorme cantidad de iteraciones y puesto que el ciclo for estaba tardando mucho, se usó el iterador de numba, con esto y varios otros parámetros para la visualización de gráficas.
 
-Primeramente se importan las librerías necesarias para la simulación y las diferentes funciones de scipy para poder hacer los cálculos estadísticos necesarios, y un estilo de gráfica la cual permita la buena visualización de los ejes y resultados 
-\textbf{Celda 1}
-\begin{lstlisting}
-# CELDA 1: Importaciones y configuración inicial
-# Cálculos
-import numpy as np
-from scipy.special import zeta
-from scipy.optimize import minimize_scalar
-from scipy.stats import ks_2samp
+2. La segunda celda consiste, como bien se describió en la introducción, en el desarrollo y como tal la base de la simulación, en este apartado con la función \textcolor{red}{np.random.randint} se toma una unidad de ataque en la posición $i$ tomando montones de otras posiciones, el $i$ escogido será aquel que sea menor que la suma de las posiciones de los anteriores que eran mayores sucesivamente que las sumas anteriores a ellos, y de ahí usando la función \textcolor{red}{np.random.rand} se simula la caida de la moneda, y si el valor termina siendo 0, la unidad $i$ se fragmenta, si es 1 $i$ sufre una coalisión con una unidad de ataque $j$ la cual se selecciona del mismo modo.
+Si se cumple la coalisión entonces dependiendo de si la fuerza de ataque es igual o diferente, se coalisionan quitando la posición de uno y estableciendo una nueva posición donde están los dos juntos, o si ambos son diferentes, a ambos se eliminan del diccionario y se les asigna un nuevo espacio. Este proceso se repite $20,000,000$ de veces.
 
-# Graficación
-from matplotlib.ticker import AutoMinorLocator
-from matplotlib import pyplot as plt
-#xd matplotlib.use('QtAgg')                         # Uses the Qt6 graphic motor
+Una vez terminadas las iteraciones, se quiere saber como quedó el sistema, por lo tanto se toma cada unidad con su nueva fuerza y se almacena en una lista.
 
-# Configuración de estilo para las gráficas
-# --- Grafica --- (sacado y modificado de un proyecto propio anterior)
-plt.rcdefaults()                                # Restarts the configuration (so new changes may appear)
-plt.close('all')                                # Closes previously opened graphs (so new changes may appear)
-
-# Grid and axes structure
-
-plt.rcParams['font.family'] = 'sans-serif'      # Font
-plt.rcParams['font.size'] = 12                  # Font Size
-plt.rcParams['figure.facecolor'] = 'white'      # Background behind graphs
-plt.rcParams['axes.facecolor'] = 'white'        # Background on graphs
-plt.rcParams['text.color'] = 'black'            # Text color black
-plt.rcParams['axes.labelcolor'] = 'black'       # Label color black
-plt.rcParams['xtick.color'] = 'black'           # X ticks/values color black
-plt.rcParams['ytick.color'] = 'black'           # Y ticks/values color black
-plt.rcParams['axes.edgecolor'] = 'black'        # Edge color black
-plt.rcParams['axes.linewidth'] = 1.5            # Edge linewidth
-plt.rcParams['axes.spines.top'] = True          # Show top spine (axe)
-plt.rcParams['axes.spines.right'] = True        # Show right spine (axe)
-plt.rcParams['lines.linewidth'] = 2             # Default function's graph linewidth
-plt.rcParams['axes.grid'] = True                # Enables the grid
-plt.rcParams['grid.color'] = 'gray'             # Grid color gray
-plt.rcParams['grid.linestyle'] = '-'            # Grid linestyle
-plt.rcParams['grid.alpha'] = 0.25               # Grid alpha
-plt.rcParams['axes.axisbelow'] = True           # Send the grid below the graph
-ax=plt.gca()                                    # Returns the Axes length
-ax.xaxis.set_minor_locator(AutoMinorLocator())  # Intermedian values on X Axis
-ax.yaxis.set_minor_locator(AutoMinorLocator())  # Intermedian values on Y Axis
-ax.tick_params(which='both', direction='in', top=True, right=True)  # Intermedian values inside the graph
-\end{lstlisting}
-
-Siguiendo con la secuencia de la manera en la que debe de realizarse el proceso de fragmentación y coalisión donde primero se escoge una unidad al azar $i$, se lanza una moneda para decidir si se fragmenta o coalisiona, y luego se escoge una unidad $j$ con la cual interactuar en caso de coalisión, pero ya que $f(s_i)\cdot f(s_j)=1$, significa que sea cual sea el evento, este ocurrirá, con esto se toman las muestras en su estado estacionario 
-
+3. Esta celda resulta ser muy importante ya que es la clave para hallar alpha y la gravedad mínima para que el sistema entre en curso apropiadamente, primeramente dado que los eventos son independientes, una independencia implica que al saber la probabilidad de distintos eventos y quere saber cuál es la probabilidad de que sucedan conjuntamente será la productoria de estas, pero al ser numeros entre 0 y 1, terminará por ser un número tan pequeño que 
 
 
 \section{Resultados}
