@@ -62,7 +62,7 @@
 \lstset{style=tema_claro}
 % Encabezado con Logo
 \lhead{\includegraphics[height=1.2cm]{Figures/Logos/Logo UNal.pdf}} 
-\chead{\textbf{Universidad Nacional de Colombia}\\ \small Programación e Introducción a Métodos Numéricos}
+\chead{\textbf{Universidad Nacional de Colombia}\\ \small Herramientas Computacionales}
 \rhead{\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -157,14 +157,23 @@
 %Usé la libreria esta pa poder meter codigos que se vea asi bien bonito xddd
 
 \section{Introducción}
-En qué consiste toda esta monda
-\section{Modelo matemático}
-Modelo matematico a seguir descrito en el texto
 
-describir los procesos de "robustez estadistica"
-\subsection{Descripción del modelo}
+Este proyecto nos permitió estudiar la dinámica de los conflictos armados, los ataques terroristas, la guerra entre guerrillas, entre otros, y nos permitió observar que este tipo de conflictos presentan un patrón estadístico. \\
 
-\subsection{Cálculos estadísticos}
+Uno de los aspectos más importantes de estos sistemas es la presencia de distribuciones de de frecuencia que siguen una ley de protencias,  la cual se expresa de la siguiente forma:\\
+
+$$P(X \geq x) \propto x^{-(\alpha -1)} $$
+
+Donde:
+\begin{itemize}
+    \item $x$: Es la fuerza del ataque realizado/ el tamaño del grupo de ataque
+    \item $\alpha$: El exponente que rigue la escala del sistema
+\end{itemize}
+
+En este caso de estudio concreto, esta distribución representa la distribución acumulada de la gravedad de los eventos, es decir, en caso de que se produzca un ataque, la severidad que este tendría. Es más, en este caso concreto, $\alpha \approx 2.5$, lo que representaría que este efecto no depende de la geografía u otros factores externos, sino de la propia organización y comportamiento del grupo que realiza el ataque, así como de sus coalescencias y fragmentaciones en el proceso.\\
+
+Dentro del documento que se nos fue entregado "Universal patterns underlying ongoing wars and terrorism" se resalta lo siguiente: 
+
 
 \section{Simulación}
 el codigo usado y como funciona/como se optimiza y cómo se construyó y como se relaciona con el 
@@ -223,10 +232,21 @@ Siguiendo con la secuencia de la manera en la que debe de realizarse el proceso 
 \section{Resultados}
 Busqueda de la dependencia de $\nu$ respecto de $\alpha$ y qué nos dice la simulación 
 
-\section{Problemas y dificultades}
+\section{Trabajo en grupo y complicaciones}
+
+Como evidencia del trabajo en grupo, se encuentra adjunta una grabación la cual empezó desde las 7pm del 29 de Octubre de 2026 hasta    donde se evidencia el trabajo en grupo y también se puede ver el aporte de cada uno al código mediante el historial de commits en GitHub del repositorio \href{https://github.com/usuario/repo}{Simulación de guerra entre guerrillas}. adjunto a continuación
 
 La dificultad principal del proyecto fue la coordinación y manejo del tiempo de los integrantes sumado a la comprensión conceptual de los artículos proporcionados por el profesor. También fue un gran reto crear el código ya que se tuvo que aprender buena parte de comandos aleatorizadores que toman y generan valores, y pensar en cómo optimizarlo ya que los codigos iniciales podían tardar hasta 4 minutos y medio.
-Otra dificultad fue usar GitHub ya que fué la primera vez de varios integrantes usándolo y bastante tiempo fue invertido en la comprensión de esta herramienta, incluyendo el uso grupal de Notion, aplicación la cual los integrantes habían usado individualmente más no grupalmente y de por sí el hecho de buscar una herramienta para trabajar grupalmente fue trabajoso gracias al poco tiempo antes de la entrega del proyecto 
+Otra dificultad fue usar GitHub ya que fué la primera vez de varios integrantes usándolo y bastante tiempo fue invertido en la comprensión de esta herramienta, incluyendo el uso grupal de Notion, aplicación la cual los integrantes habían usado individualmente más no grupalmente y de por sí el hecho de buscar una herramienta para trabajar grupalmente fue trabajoso gracias al poco tiempo antes de la entrega del proyecto. 
+A continuación se presenta una evidencia de la reunión hecha en meet la noche anterior a la entrega del proyecto.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/Imágenes/WhatsApp Image 2026-10-29 at 11.20.55 PM.jpeg}
+    \caption{Los 3 integrantes del grupo con bastantes ganas de irse a dormir}
+    \label{fig:placeholder}
+\end{figure}
+
+
 
 \section{Conclusión}
 ¿Qué podemos decir entonces de este exponente $\alpha$ y su correlación con la organización de las unidades de ataque?
@@ -236,3 +256,5 @@ Como terminó siendo $\nu$ respecto a $\alpha$
 
 
 \end{document}
+
+
