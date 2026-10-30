@@ -173,25 +173,60 @@ modelo matematico
 Primeramente se importan las librerías necesarias para la simulación y las diferentes funciones de scipy para poder hacer los cálculos estadísticos necesarios, y un estilo de gráfica la cual permita la buena visualización de los ejes y resultados 
 \textbf{Celda 1}
 \begin{lstlisting}
+# CELDA 1: Importaciones y configuración inicial
+# Cálculos
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.special import zeta
 from scipy.optimize import minimize_scalar
 from scipy.stats import ks_2samp
-plt.style.use('seaborn-v0_8-whitegrid')
+
+# Graficación
+from matplotlib.ticker import AutoMinorLocator
+from matplotlib import pyplot as plt
+#xd matplotlib.use('QtAgg')                         # Uses the Qt6 graphic motor
+
+# Configuración de estilo para las gráficas
+# --- Grafica --- (sacado y modificado de un proyecto propio anterior)
+plt.rcdefaults()                                # Restarts the configuration (so new changes may appear)
+plt.close('all')                                # Closes previously opened graphs (so new changes may appear)
+
+# Grid and axes structure
+
+plt.rcParams['font.family'] = 'sans-serif'      # Font
+plt.rcParams['font.size'] = 12                  # Font Size
+plt.rcParams['figure.facecolor'] = 'white'      # Background behind graphs
+plt.rcParams['axes.facecolor'] = 'white'        # Background on graphs
+plt.rcParams['text.color'] = 'black'            # Text color black
+plt.rcParams['axes.labelcolor'] = 'black'       # Label color black
+plt.rcParams['xtick.color'] = 'black'           # X ticks/values color black
+plt.rcParams['ytick.color'] = 'black'           # Y ticks/values color black
+plt.rcParams['axes.edgecolor'] = 'black'        # Edge color black
+plt.rcParams['axes.linewidth'] = 1.5            # Edge linewidth
+plt.rcParams['axes.spines.top'] = True          # Show top spine (axe)
+plt.rcParams['axes.spines.right'] = True        # Show right spine (axe)
+plt.rcParams['lines.linewidth'] = 2             # Default function's graph linewidth
+plt.rcParams['axes.grid'] = True                # Enables the grid
+plt.rcParams['grid.color'] = 'gray'             # Grid color gray
+plt.rcParams['grid.linestyle'] = '-'            # Grid linestyle
+plt.rcParams['grid.alpha'] = 0.25               # Grid alpha
+plt.rcParams['axes.axisbelow'] = True           # Send the grid below the graph
+ax=plt.gca()                                    # Returns the Axes length
+ax.xaxis.set_minor_locator(AutoMinorLocator())  # Intermedian values on X Axis
+ax.yaxis.set_minor_locator(AutoMinorLocator())  # Intermedian values on Y Axis
+ax.tick_params(which='both', direction='in', top=True, right=True)  # Intermedian values inside the graph
 \end{lstlisting}
 
 Siguiendo con la secuencia de la manera en la que debe de realizarse el proceso de fragmentación y coalisión donde primero se escoge una unidad al azar $i$, se lanza una moneda para decidir si se fragmenta o coalisiona, y luego se escoge una unidad $j$ con la cual interactuar en caso de coalisión, pero ya que $f(s_i)\cdot f(s_j)=1$, significa que sea cual sea el evento, este ocurrirá, con esto se toman las muestras en su estado estacionario 
 
 
 
-
-
-
-\section{Análisis}
+\section{Resultados}
 Busqueda de la dependencia de $\nu$ respecto de $\alpha$ y qué nos dice la simulación 
 
 \section{Problemas y dificultades}
+
+La dificultad principal del proyecto fue la coordinación y manejo del tiempo de los integrantes sumado a la comprensión conceptual de los artículos proporcionados por el profesor. También fue un gran reto crear el código ya que se tuvo que aprender buena parte de comandos aleatorizadores que toman y generan valores, y pensar en cómo optimizarlo ya que los codigos iniciales podían tardar hasta 4 minutos y medio.
+Otra dificultad fue usar GitHub ya que fué la primera vez de varios integrantes usándolo y bastante tiempo fue invertido en la comprensión de esta herramienta, incluyendo el uso grupal de Notion, aplicación la cual los integrantes habían usado individualmente más no grupalmente y de por sí el hecho de buscar una herramienta para trabajar grupalmente fue trabajoso gracias al poco tiempo antes de la entrega del proyecto 
 
 \section{Conclusión}
 ¿Qué podemos decir entonces de este exponente $\alpha$ y su correlación con la organización de las unidades de ataque?
