@@ -1,8 +1,8 @@
 # CompTools-UNal
 Trabajitos de Tratemenos serios
 ## Integrantes del grupo
-Sara Lucía Alba Mogollón \
+Sara Lucía Alba Mogollón 
 
-Kéyner Alexander Avendaño Contreras \
+Kéyner Alexander Avendaño Contreras 
 
 Daniel Pérez Serna 
