@@ -160,10 +160,38 @@
 En qué consiste toda esta monda
 \section{Modelo matemático}
 Modelo matematico a seguir descrito en el texto
+
+describir los procesos de "robustez estadistica"
+\subsection{Descripción del modelo}
+
+\subsection{Cálculos estadísticos}
+
 \section{Simulación}
-el codigo usado y como funciona/como se optimiza y cómo se construyó y como se relaciona con el modelo matematico
+el codigo usado y como funciona/como se optimiza y cómo se construyó y como se relaciona con el 
+modelo matematico
+
+Primeramente se importan las librerías necesarias para la simulación y las diferentes funciones de scipy para poder hacer los cálculos estadísticos necesarios, y un estilo de gráfica la cual permita la buena visualización de los ejes y resultados 
+\textbf{Celda 1}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.special import zeta
+from scipy.optimize import minimize_scalar
+from scipy.stats import ks_2samp
+plt.style.use('seaborn-v0_8-whitegrid')
+\end{lstlisting}
+
+Siguiendo con la secuencia de la manera en la que debe de realizarse el proceso de fragmentación y coalisión donde primero se escoge una unidad al azar $i$, se lanza una moneda para decidir si se fragmenta o coalisiona, y luego se escoge una unidad $j$ con la cual interactuar en caso de coalisión, pero ya que $f(s_i)\cdot f(s_j)=1$, significa que sea cual sea el evento, este ocurrirá, con esto se toman las muestras en su estado estacionario 
+
+
+
+
+
+
 \section{Análisis}
 Busqueda de la dependencia de $\nu$ respecto de $\alpha$ y qué nos dice la simulación 
+
+\section{Problemas y dificultades}
 
 \section{Conclusión}
 ¿Qué podemos decir entonces de este exponente $\alpha$ y su correlación con la organización de las unidades de ataque?
